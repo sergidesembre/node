@@ -1,18 +1,17 @@
-var express = require('express');
-var MongoClient = require('mongodb').MongoClient;
+'use strict';
 
-var app = express();
+const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const component = require('./component');
 
 
-MongoClient.connect("mongodb://mongo:27017/users", function(err, db) {
-    if(err) {
-        console.log("Error connecting to mongodb");
-    }
-});
+const app = express();
 
-app.get('/', function(req, res){
-    res.send("Hello World");
-});
+
+app.use('/api',  component);
+
+
 app.listen(3000, function(){
     console.log('listening on port 3000!');
 });
