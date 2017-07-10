@@ -7,5 +7,8 @@ router.route('/')
   .get(userController.getUsers)
   .post(userController.newUser);
 
+router.route('/:user_id')
+  .get(userController.getUser);
+
 
 module.exports = router;

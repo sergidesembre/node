@@ -9,6 +9,13 @@ let getUsers = (req, res) => {
   });
 };
 
+let getUser = (req, res) => {
+  User.findById(req.params.user_id, function(err, user) {
+    if (err) res.send(err);
+    res.json(user);
+  });
+}
+
 let newUser = (req, res) => {
   const user = new User();
   user.name = req.body.name;
@@ -24,4 +31,8 @@ let newUser = (req, res) => {
   });
 }
 
-module.exports = { getUsers, newUser };
+module.exports = {
+  getUsers,
+  getUser,
+  newUser
+};
