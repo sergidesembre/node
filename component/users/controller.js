@@ -1,6 +1,11 @@
 'use strict';
 
 const User = require('./model');
+const userController = require('./controller');
+
+
+
+
 
 let getUsers = (req, res) => {
   User.find(function(err, users) {
