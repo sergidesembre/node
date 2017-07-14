@@ -7,9 +7,9 @@ const async = require('async');
 
 let getAccuWeather = (req, res) => {
   let myUrls = [
-    'https://www.google.com',
-    'https://www.google.com',
-    'https://www.google.com'
+    'https://waynabox.com/es/api/packs?departureId=15&days=5',
+    'https://waynabox.com/es/api/packs?departureId=15&days=5',
+    'https://waynabox.com/es/api/packs?departureId=15&days=5'
   ];
 
   let responseArray = [];
@@ -17,7 +17,7 @@ let getAccuWeather = (req, res) => {
   async.map(myUrls, (url) => {
     request(url)
       .then((response) => {
-        responseArray.push(response);
+        responseArray.push(JSON.parse(response));
       })
       .catch((err) => {
         res.json({
